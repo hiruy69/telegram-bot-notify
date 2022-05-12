@@ -1,0 +1,34 @@
+name: 'Notify push to telegram bot'
+description: 'A GitHub Action to send workflow status over a Telegram bot'
+author: 'hiruy'
+inputs:
+  chat_id:
+    description: 'Chat to send the status'
+    required: true
+  bot_token:
+    description: 'Telegram bot token'
+    required: true
+  job_status:
+    description: 'Job status'
+    required: true
+runs:
+  using: 'node12'
+  main: 'index.js'
+branding:
+  color: 'blue'
+  icon: 'send'
+
+
+# name: 'Hello World'
+# description: 'Greet someone and record the time'
+# inputs:
+#   who-to-greet:  # id of input
+#     description: 'Who to greet'
+#     required: true
+#     default: 'World'
+# outputs:
+#   time: # id of output
+#     description: 'The time we greeted you'
+# runs:
+#   using: 'node16'
+#   main: 'index.js'

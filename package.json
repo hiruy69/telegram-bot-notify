@@ -1,0 +1,25 @@
+{
+  "name": "telegram-bot-notify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hiruy69/telegram-bot-notify.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hiruy69/telegram-bot-notify/issues"
+  },
+  "homepage": "https://github.com/hiruy69/telegram-bot-notify#readme",
+  "dependencies": {
+    "@actions/core": "^1.8.0",
+    "@actions/github": "^5.0.1",
+    "axios": "^0.27.2"
+  }
+}
