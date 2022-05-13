@@ -12,8 +12,10 @@ async function run() {
 
     const jobStatus = process.env.INPUT_JOB_STATUS
 
-    const botToken = process.env.INPUT_BOT_TOKEN
-    const chatId = process.env.INPUT_CHAT_ID
+    const botToken = '5365896757:AAFb30hf22bMj8AZBfdmhn2wbOBmra74ITQ'
+    //process.env.INPUT_BOT_TOKEN
+    const chatId = '329763759'
+    //process.env.INPUT_CHAT_ID
 
     let statusMessage = 'Undefined ❎'
 
