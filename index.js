@@ -44,15 +44,15 @@ async function run() {
 
     const checkURL = `https://github.com/${repository}/commit/${commit}/checks`
 
-    await axios.get(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+    await axios.get(`https://api.telegram.org/bot5365896757:AAFb30hf22bMj8AZBfdmhn2wbOBmra74ITQ/sendMessage`, {
       params: {
-        chat_id: chatId,
+        chat_id: "329763759",
         text: `*GitHub Actions Workflow*\nStatus: ${statusMessage}\nRepository: https://github.com/${repository}` +
           `${ref}\nWorkflow: ${workflow} - ${runId} (${runNumber})\nChecks: ${checkURL}`,
         parse_mode: 'Markdown',
         disable_web_page_preview: true,
       },
-    })
+    }).then((data)=>core.setFailed(data)).catch((err)=>core.setFailed(err))
 
     if (jobStatus !== 'success' || !tag) {
       return
