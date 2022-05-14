@@ -9,4 +9,4 @@ jobs:
     steps:
       - name: test
         run: echo "This step will be skipped on Monday and Wednesday"
-        uses: ./
+        # uses: ./
