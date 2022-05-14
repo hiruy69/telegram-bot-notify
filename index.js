@@ -52,7 +52,7 @@ async function run() {
           parse_mode: 'Markdown',
           disable_web_page_preview: true,
         },
-      }).then(data=>console.log(data))
+      })
 
     if (jobStatus !== 'success' || !tag) {
       return
@@ -64,3 +64,4 @@ async function run() {
 }
 
 run()
+console.log('hey')
