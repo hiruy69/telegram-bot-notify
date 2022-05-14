@@ -13,7 +13,7 @@ jobs:
       - uses:  hiruy69/telegram-bot-notify@main
         env: # all the six environment variables are must, else the action will raise errors.
           SERVER_BOT_TOKEN: ${{ secrets.BOT_TOKEN }} # automatically fetched. none of business.
-          CHAT_ID: ${{ secrets.CHAT_ID }} # link of raw file of bots in JSON format. (eg :~ https://gist.githubusercontent.com/jainamoswal/cc331a3d2a4169ab76885c5a1e076d68/raw#file-bots-json)
+          CHAT_ID: ${{ secrets.CHAT_ID }} 
 
 
 
