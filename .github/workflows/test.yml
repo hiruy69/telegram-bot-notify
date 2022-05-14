@@ -1,12 +1,9 @@
 on:
-  push:
-    branches:    [main]
-
-
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, closed]
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: test
-        run: echo "This step will be skipped on Monday and Wednesday"
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
