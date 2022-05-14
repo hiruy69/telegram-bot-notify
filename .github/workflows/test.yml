@@ -9,4 +9,4 @@ jobs:
     steps:
       - name: test
         run: echo "This step will be skipped on Monday and Wednesday"
-        uses: hiruy69/main
+        uses: actions/checkout@v3
