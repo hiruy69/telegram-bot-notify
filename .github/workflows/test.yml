@@ -1,0 +1,12 @@
+on:
+  push:
+    branches:    [main]
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Not on Monday or Wednesday
+        run: echo "This step will be skipped on Monday and Wednesday"
+        uses: ./
