@@ -7,7 +7,7 @@ runs:
   steps: 
     - name: 📀 Install dependency. 📀
       run: |
-        pip install --upgrade pytz telethon pygithub pip > requirements.txt 2>&1
+        pip install --upgrade python-telegram-bot python-decouple pytz telethon pygithub pip > requirements.txt 2>&1
       shell: bash
     - name: Run the action.
       run: python ${{ github.action_path }}/main_my.py
