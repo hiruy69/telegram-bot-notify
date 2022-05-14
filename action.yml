@@ -1,22 +1,39 @@
 name: 'Notify push to telegram bot'
 description: 'A GitHub Action to send workflow status over a Telegram bot'
 author: 'hiruy'
-inputs:
-  chat_id:
-    description: 'Chat to send the status'
-    required: true
-  bot_token:
-    description: 'Telegram bot token'
-    required: true
-  job_status:
-    description: 'Job status'
-    required: true
+
 runs:
-  using: 'node16'
-  main: 'dist/index.js'
+  using: "composite"
+  steps: 
+    - name: 📀 Install dependency. 📀
+      run: |
+        pip install --upgrade pytz telethon pygithub pip > requirements.txt 2>&1
+      shell: bash
+    - name: Run the action.
+      run: python ${{ github.action_path }}/main_my.py
+      shell: bash
+
+
 branding:
-  color: 'blue'
   icon: 'send'
+  color: 'white'
+
+# inputs:
+#   chat_id:
+#     description: 'Chat to send the status'
+#     required: true
+#   bot_token:
+#     description: 'Telegram bot token'
+#     required: true
+#   job_status:
+#     description: 'Job status'
+#     required: true
+# runs:
+#   using: 'node16'
+#   main: 'dist/index.js'
+# branding:
+#   color: 'blue'
+#   icon: 'send'
 
 
 # name: 'Hello World'
