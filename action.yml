@@ -1,3 +1,29 @@
+# name: 'Notify push to telegram bot'
+# description: 'A GitHub Action to send workflow status over a Telegram bot'
+# author: 'hiruy'
+# inputs:
+#   HEAD_COMMIT:
+#     description: 'branch commit body'
+#     required: true
+# runs:
+#   using: "composite"
+#   steps: 
+#     - name: 📀 Install dependency. 📀
+#       run: |
+#         pip install --upgrade python-telegram-bot python-decouple pytz telethon pygithub pip > requirements.txt 2>&1
+#       shell: bash
+#     - name: Run the action.
+#       run: python ${{ github.action_path }}/main_my.py
+#       shell: bash
+
+
+# branding:
+#   icon: 'send'
+#   color: 'white'
+
+
+
+
 name: 'Notify push to telegram bot'
 description: 'A GitHub Action to send workflow status over a Telegram bot'
 author: 'hiruy'
@@ -5,21 +31,28 @@ inputs:
   HEAD_COMMIT:
     description: 'branch commit body'
     required: true
-runs:
-  using: "composite"
-  steps: 
-    - name: 📀 Install dependency. 📀
-      # run: |
-        # pip install --upgrade python-telegram-bot python-decouple pytz telethon pygithub pip > requirements.txt 2>&1
-      with:
-        python-version: '3.x'
-        cache: 'pip'
-      run: pip install -r requirements.txt
-      shell: bash
-    - name: Run the action.
-      run: python ${{ github.action_path }}/main_my.py
-      shell: bash
 
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      # You can use PyPy versions in python-version.
+      # For example, pypy2 and pypy3
+      matrix:
+        python-version: ["3.6", "3.7", "3.8", "3.9"]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+      run: pip install -r requirements.txt
+      # You can test your matrix by printing the current Python version
+      - name: Run the action
+        run: python ${{ github.action_path }}/main_my.py
 
 branding:
   icon: 'send'
