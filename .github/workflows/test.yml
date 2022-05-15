@@ -17,7 +17,7 @@ jobs:
           echo "${{ github.repo.name }}"
           echo "${{ github.actor.display_login }}"
           echo "${{ github.repo.url }}"
-          echo "${{ github }}"
+          echo "${{ github.github.event }}"
           echo "${{ github.branche }}"
       - uses:  hiruy69/telegram-bot-notify@main
         with:
