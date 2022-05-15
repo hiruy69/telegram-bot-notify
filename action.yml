@@ -9,8 +9,12 @@ runs:
   using: "composite"
   steps: 
     - name: 📀 Install dependency. 📀
-      run: |
-        pip install --upgrade python-telegram-bot python-decouple pytz telethon pygithub pip > requirements.txt 2>&1
+      # run: |
+        # pip install --upgrade python-telegram-bot python-decouple pytz telethon pygithub pip > requirements.txt 2>&1
+      with:
+        python-version: '3.x'
+        cache: 'pip'
+      run: pip install -r requirements.txt
       shell: bash
     - name: Run the action.
       run: python ${{ github.action_path }}/main_my.py

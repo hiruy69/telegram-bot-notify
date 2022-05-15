@@ -33,12 +33,12 @@ def main() -> None:
     updater = Updater(config("SERVER_BOT_TOKEN")) 
     HEAD_COMMIT_MESSAGE = config("HEAD_COMMIT_MESSAGE")
     HEAD_COMMIT_ACTOR = config("HEAD_COMMIT_ACTOR")
-    Text =  f"""*GitHub Actions Workflow*\nStatus: {'Success ✅'}
+    Text =  f"""*Change Notify*\nStatus: {'Success ✅'}
             \nRepository: https://github.com/{'repository'}
             \nUser: {HEAD_COMMIT_ACTOR}
             \Commit: {HEAD_COMMIT_MESSAGE}"""
     updater.bot.send_message(chat_id=config("CHAT_ID"),text=Text)
-    print(':::::::::::::::::::::: ⏲️ notification sent successfully ⏲️ ::::::::::::::::::::::')
+    print(':::::::::::::::::::::: 🎉 notification sent successfully 🎉 ::::::::::::::::::::::')
 
 if __name__ == "__main__":
     main()
