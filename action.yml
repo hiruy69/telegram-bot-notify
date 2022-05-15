@@ -1,7 +1,10 @@
 name: 'Notify push to telegram bot'
 description: 'A GitHub Action to send workflow status over a Telegram bot'
 author: 'hiruy'
-
+inputs:
+  HEAD_COMMIT:
+    description: 'branch commit body'
+    required: true
 runs:
   using: "composite"
   steps: 
