@@ -10,9 +10,12 @@ jobs:
     name: 🏃‍♂️ run the bot 🏃‍♂️
     runs-on: ubuntu-latest
     steps:
+      - name: Logging
+        run: |
+          echo "${{ github.event.head_commit }}"
       - uses:  hiruy69/telegram-bot-notify@main
-        with:
-          HEAD_COMMIT: ${{ github.event.head_commit }}
+        # with:
+        #   HEAD_COMMIT: ${{ github.event.head_commit }}
         env: # all the six environment variables are must, else the action will raise errors.
           SERVER_BOT_TOKEN: ${{ secrets.BOT_TOKEN }} # automatically fetched. none of business.
           CHAT_ID: ${{ secrets.CHAT_ID }} 
