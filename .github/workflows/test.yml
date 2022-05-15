@@ -17,11 +17,11 @@ jobs:
           echo "${{ github.repo.name }}"
           echo "${{ github.actor.display_login }}"
           echo "${{ github.repo.url }}"
-          echo "${{ github.github.event }}"
-          echo "${{ github.branche }}"
+          echo "${{ github.event }}"
+          echo "${{ github }}"
       - uses:  hiruy69/telegram-bot-notify@main
         with:
-          HEAD_COMMIT: ${{ github.event.head_commit.message  }}
+          HEAD_COMMIT: ${{ github }}
         env: # all the six environment variables are must, else the action will raise errors.
           SERVER_BOT_TOKEN: ${{ secrets.BOT_TOKEN }} # automatically fetched. none of business.
           CHAT_ID: ${{ secrets.CHAT_ID }} 
