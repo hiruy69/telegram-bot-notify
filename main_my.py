@@ -31,9 +31,14 @@ def main() -> None:
     """Run bot."""
     # Create the Updater and pass it your bot's token.  
     updater = Updater(config("SERVER_BOT_TOKEN")) 
-    updater.bot.send_message(chat_id=config("CHAT_ID"),text="hello hiruy")
+    HEAD_COMMIT_MESSAGE = config("HEAD_COMMIT_MESSAGE")
+    HEAD_COMMIT_ACTOR = config("HEAD_COMMIT_ACTOR")
+    Text =  f"""*GitHub Actions Workflow*\nStatus: {'Success ✅'}
+            \nRepository: https://github.com/{'repository'}
+            \nUser: {HEAD_COMMIT_ACTOR}
+            \Commit: {HEAD_COMMIT_MESSAGE}"""
+    updater.bot.send_message(chat_id=config("CHAT_ID"),text=Text)
     print(':::::::::::::::::::::: ⏲️ notification sent successfully ⏲️ ::::::::::::::::::::::')
-    print()
 
 if __name__ == "__main__":
     main()
