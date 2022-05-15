@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Logging
         run: |
-          echo "${{ github.event.head_commit }}"
+          echo "${{ github.event.head_commit.message }}"
       - uses:  hiruy69/telegram-bot-notify@main
         # with:
         #   HEAD_COMMIT: ${{ github.event.head_commit }}
