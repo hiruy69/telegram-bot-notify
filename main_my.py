@@ -2,15 +2,9 @@ import github
 import os
 import logging
 from decouple import config
-# from telegram import (
-#     Poll,
-#     ParseMode,
-#     KeyboardButton,
-#     KeyboardButtonPollType,
-#     ReplyKeyboardMarkup,
-#     ReplyKeyboardRemove,
-#     Update,
-# )
+from string import Template
+from telegram import ParseMode
+
 from telegram.ext import (
     Updater,
     CommandHandler,
@@ -37,7 +31,22 @@ def main() -> None:
             \nRepository: https://github.com/{'repository'}
             \nUser: {HEAD_COMMIT_ACTOR}
             \Commit: {HEAD_COMMIT_MESSAGE}"""
-    updater.bot.send_message(chat_id=config("CHAT_ID"),text=Text)
+    data = {
+        'author': HEAD_COMMIT_ACTOR,
+        'message': HEAD_COMMIT_MESSAGE,
+        'domain': config("DOMAIN"),
+    }
+    Text = Template(
+        '''
+        <b><i> 🎉 Server Update Notice 🎉</i></b>
+        <b><i>$author</i></b> Just Updated $domain.
+        Change-Notes: 
+        _________________________
+        - $message
+        _________________________
+        '''
+    )
+    updater.bot.send_message(chat_id=config("CHAT_ID"),text=Text.safe_substitute(data), parse_mode=ParseMode.HTML)
     print(':::::::::::::::::::::: 🎉 notification sent successfully 🎉 ::::::::::::::::::::::')
 
 if __name__ == "__main__":
